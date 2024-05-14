@@ -17,7 +17,7 @@ if (isset($_POST["type"])) {
         else 
         {
         if ($count == 1) {
-            $_SESSION['carname'] = $username;
+            $_SESSION['datingname'] = $username;
 
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Login Successfully!", "message" => "welcome admin!!", "action" => "dashboard.php"];
         } else {
@@ -65,7 +65,7 @@ if (isset($_POST["type"])) {
             ];
 
             $h = new Gomeet($dating);
-            $check = $h->datinginsertdata($field_values, $data_values, $table);
+            $check = trim($h->datinginsertdata($field_values, $data_values, $table));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -101,7 +101,7 @@ if (isset($_POST["type"])) {
                 $field = ["status" => $status, "title" => $title,"amt"=>$amt,"day_limit"=>$day_limit,"description"=>$description,"filter_include"=>$filter_include,"audio_video"=>$audio_video,"direct_chat"=>$direct_chat,"chat"=>$chat,"Like_menu"=>$Like_menu];
                 $where = "where id=" . $id . "";
                 $h = new Gomeet($dating);
-                $check = $h->datingupdateData($field, $table, $where);
+                $check = trim($h->datingupdateData($field, $table, $where));
 if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -130,7 +130,7 @@ if($check == -1)
         $data_values = ["$cdesc", "$cstatus", "$ctitle"];
 
         $h = new Gomeet($dating);
-        $check = $h->datinginsertdata($field_values, $data_values, $table);
+        $check = trim($h->datinginsertdata($field_values, $data_values, $table));
 		if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -151,7 +151,7 @@ if($check == -1)
         $field = ['description' => $cdesc, 'status' => $cstatus, 'title' => $ctitle];
         $where = "where id=" . $id . "";
         $h = new Gomeet($dating);
-        $check = $h->datingupdateData($field, $table, $where);
+        $check = trim($h->datingupdateData($field, $table, $where));
 		if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -181,7 +181,7 @@ if($check == -1)
                 $field = ['status' => $okey, 'img' => $url, 'attributes' => $attributes, 'subtitle' => $ptitle, 'p_show' => $p_show];
                 $where = "where id=" . $id . "";
                 $h = new Gomeet($dating);
-                $check = $h->datingupdateData($field, $table, $where);
+                $check = trim($h->datingupdateData($field, $table, $where));
 if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -197,7 +197,7 @@ if($check == -1)
             $field = ['status' => $okey, 'attributes' => $attributes, 'subtitle' => $ptitle, 'p_show' => $p_show];
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData($field, $table, $where);
+            $check = trim($h->datingupdateData($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -219,7 +219,7 @@ if($check == -1)
         $data_values = ["$question", "$answer", "$okey"];
 
         $h = new Gomeet($dating);
-        $check = $h->datinginsertdata($field_values, $data_values, $table);
+        $check = trim($h->datinginsertdata($field_values, $data_values, $table));
 		if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -240,7 +240,7 @@ if($check == -1)
         $field = ['question' => $question, 'status' => $okey, 'answer' => $answer];
         $where = "where id=" . $id . "";
         $h = new Gomeet($dating);
-        $check = $h->datingupdateData($field, $table, $where);
+        $check = trim($h->datingupdateData($field, $table, $where));
 		if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -260,7 +260,7 @@ if($check == -1)
             $field = ['username' => $dname, 'password' => $dsname];
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData($field, $table, $where);
+            $check = trim($h->datingupdateData($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -296,7 +296,7 @@ if($check == -1)
                 $field = ['timezone' => $timezone, 'weblogo' => $url, 'webname' => $webname, 'currency' => $currency, 'one_key' => $one_key, 'one_hash' => $one_hash];
                 $where = "where id=" . $id . "";
                 $h = new Gomeet($dating);
-                $check = $h->datingupdateData($field, $table, $where);
+                $check = trim($h->datingupdateData($field, $table, $where));
 if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -312,7 +312,7 @@ if($check == -1)
             $field = ['timezone' => $timezone, 'webname' => $webname, 'currency' => $currency, 'one_key' => $one_key, 'one_hash' => $one_hash];
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData($field, $table, $where);
+            $check = trim($h->datingupdateData($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -340,7 +340,7 @@ if($check == -1)
             $data_values = ["$url", "$okey", "$title"];
 
             $h = new Gomeet($dating);
-            $check = $h->datinginsertdata($field_values, $data_values, $table);
+            $check = trim($h->datinginsertdata($field_values, $data_values, $table));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -374,7 +374,7 @@ if($check == -1)
             $data_values = ["$url", "$okey", "$title"];
 
             $h = new Gomeet($dating);
-            $check = $h->datinginsertdata($field_values, $data_values, $table);
+            $check = trim($h->datinginsertdata($field_values, $data_values, $table));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -401,7 +401,7 @@ if($check == -1)
             $data_values = ["$okey", "$title"];
 
             $h = new Gomeet($dating);
-            $check = $h->datinginsertdata($field_values, $data_values, $table);
+            $check = trim($h->datinginsertdata($field_values, $data_values, $table));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -428,7 +428,7 @@ if($check == -1)
             $data_values = ["$okey", "$title", "$subtitle"];
 
             $h = new Gomeet($dating);
-            $check = $h->datinginsertdata($field_values, $data_values, $table);
+            $check = trim($h->datinginsertdata($field_values, $data_values, $table));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -462,7 +462,7 @@ if($check == -1)
                 $field = ["status" => $okey, "img" => $url,"title"=>$title];
                 $where = "where id=" . $id . "";
                 $h = new Gomeet($dating);
-                $check = $h->datingupdateData($field, $table, $where);
+                $check = trim($h->datingupdateData($field, $table, $where));
 if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -484,7 +484,7 @@ if($check == -1)
             $field = ["status" => $okey,"title"=>$title];
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData($field, $table, $where);
+            $check = trim($h->datingupdateData($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -519,7 +519,7 @@ if($check == -1)
                 $field = ["status" => $okey, "img" => $url,"title"=>$title];
                 $where = "where id=" . $id . "";
                 $h = new Gomeet($dating);
-                $check = $h->datingupdateData($field, $table, $where);
+                $check = trim($h->datingupdateData($field, $table, $where));
 if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -541,7 +541,7 @@ if($check == -1)
             $field = ["status" => $okey,"title"=>$title];
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData($field, $table, $where);
+            $check = trim($h->datingupdateData($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -568,7 +568,7 @@ if($check == -1)
             $field = ["status" => $okey,"title"=>$title];
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData($field, $table, $where);
+            $check = trim($h->datingupdateData($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -595,7 +595,7 @@ if($check == -1)
             $field = ["status" => $okey,"title"=>$title,"subtitle"=>$subtitle];
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData($field, $table, $where);
+            $check = trim($h->datingupdateData($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -622,7 +622,7 @@ if($check == -1)
             $field = "status=" . $status . "";
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData_single($field, $table, $where);
+            $check = trim($h->datingupdateData_single($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
@@ -646,7 +646,7 @@ if($check == -1)
             $field = ["is_verify" => $status,"identity_picture"=>NULL,"is_verify"=>0];
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData($field, $table, $where);
+            $check = trim($h->datingupdateData($field, $table, $where));
 			}
 			else 
 			{
@@ -654,7 +654,7 @@ if($check == -1)
             $field = "is_verify=" . $status . "";
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData_single($field, $table, $where);
+            $check = trim($h->datingupdateData_single($field, $table, $where));
 			}
 			if($check == -1)
         {
@@ -678,7 +678,7 @@ if($check == -1)
             $field = "show_dark=" . $status . "";
             $where = "where id=" . $id . "";
             $h = new Gomeet($dating);
-            $check = $h->datingupdateData_single($field, $table, $where);
+            $check = trim($h->datingupdateData_single($field, $table, $where));
 			if($check == -1)
         {
             $returnArr = ["ResponseCode" => "200", "Result" => "true", "title" => "Please Activate Domain First!!!", "message" => "Validation!!", "action" => "validate_domain.php"];
