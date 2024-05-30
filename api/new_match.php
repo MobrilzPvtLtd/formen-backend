@@ -6,6 +6,8 @@ $uid = $data['uid'];
 $lats = $data['lats'];
 $longs = $data['longs'];
 
+$api_key = 'AIzaSyAMAubn-RPNtqBD-4JTq-YkeVi5Fq-MeBc';
+
 function calculateDistance($originLat, $originLng, $destLat, $destLng, $apiKey) {
     $unit = "K";
     $theta = (float)$originLng - (float)$destLng;
