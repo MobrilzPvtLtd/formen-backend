@@ -12,4 +12,5 @@ try {
 }
 $prints = $dating->query("select * from tbl_meet")->fetch_assoc();	
     $set = $dating->query("SELECT * FROM `tbl_setting`")->fetch_assoc();
+    $apiKey = "AIzaSyAMAubn-RPNtqBD-4JTq-YkeVi5Fq-MeBc";
 ?>
