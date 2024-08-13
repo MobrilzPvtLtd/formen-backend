@@ -7,9 +7,9 @@ require dirname(dirname(__FILE__)) . '/../inc/Connection.php';
 print_r($_REQUEST);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $senderId = $_POST['sender_id'];
-    $receiverId = $_POST['receiver_id'];
-    $message = $_POST['message'];
+    $senderId = $_REQUEST['sender_id'];
+    $receiverId = $_REQUEST['receiver_id'];
+    $message = $_REQUEST['message'];
 
     // Sanitize input (use appropriate sanitization functions)
     $senderId = $dating->real_escape_string($senderId);
