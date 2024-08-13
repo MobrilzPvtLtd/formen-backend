@@ -3,9 +3,9 @@
     width: 400px;
     height: 500px;
     border: 1px solid #ccc;
-    overflow-y: auto; /* Enable vertical scrolling if messages overflow */
-    margin: 20px auto; /* Center the chat container */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    overflow-y: auto; 
+    margin: 20px auto; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 /* Styling for individual messages */
@@ -13,22 +13,46 @@
     margin-bottom: 10px;
     padding: 8px 12px;
     border-radius: 8px;
-    max-width: 70%; /* Limit message width for better readability */
-    word-wrap: break-word; /* Allow long words to break and wrap */
+    max-width: 70%; 
+    word-wrap: break-word; 
+    position: relative; /* For positioning the edit button */
 }
 
 /* Styling for sent messages */
 .sent {
-    background-color: #dcf8c6; /* Light green */
+    background-color: #dcf8c6; 
     float: right;
-    clear: both; /* Prevent overlapping with previous messages */
+    clear: both; 
 }
 
 /* Styling for received messages */
 .received {
-    background-color: #f0f0f0; /* Light gray */
+    background-color: #f0f0f0; 
     float: left;
     clear: both;
+}
+
+/* Styling for the edit button */
+.edit-button {
+    background-color: transparent;
+    border: none;
+    color: #007bff; /* Blue */
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    right: 10px; /* Adjust as needed */
+}
+
+/* Styling for the save button (displayed during editing) */
+.save-button {
+    background-color: #28a745; /* Green */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 /* Styling for the input area */
@@ -39,7 +63,7 @@
 
 /* Styling for the message input field */
 #message-input {
-    width: calc(100% - 100px); /* Adjust width to accommodate the button */
+    width: calc(100% - 100px); 
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -49,7 +73,7 @@
 /* Styling for the send button */
 #send-button {
     padding: 8px 15px;
-    background-color: #0084ff; /* Blue */
+    background-color: #0084ff; 
     color: white;
     border: none;
     border-radius: 5px;
