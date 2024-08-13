@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Live Chat</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div id="chat-container">
         <div id="chat-messages">
-            </div>
+        </div>
     </div>
 
     <div id="input-area">
@@ -18,10 +20,10 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Replace with actual user IDs (you'll need to implement user authentication)
-            var senderId = 1; 
-            var receiverId = 2; 
+            var senderId = 1;
+            var receiverId = 2;
 
             // Function to send a message via AJAX
             function sendMessage() {
@@ -31,21 +33,21 @@
                 $.ajax({
                     type: 'POST',
                     url: 'send_message.php',
-                    data: { 
-                        sender_id: senderId, 
-                        receiver_id: receiverId, 
-                        message: message 
+                    data: {
+                        sender_id: senderId,
+                        receiver_id: receiverId,
+                        message: message
                     },
-                    success: function(response) {
+                    success: function (response) {
                         if (response.status === 'success') {
                             $('#message-input').val('');
-                            displayMessage(message, true); 
-                            getMessages(); 
+                            displayMessage(message, true);
+                            getMessages();
                         } else {
-                            alert(response.message); 
+                            alert(response.message);
                         }
                     },
-                    error: function() {
+                    error: function () {
                         alert('Error sending message. Please try again.');
                     }
                 });
@@ -56,11 +58,11 @@
                 $.ajax({
                     type: 'GET',
                     url: 'get_messages.php',
-                    data: { 
-                        sender_id: senderId, 
-                        receiver_id: receiverId 
+                    data: {
+                        sender_id: senderId,
+                        receiver_id: receiverId
                     },
-                    success: function(response) {
+                    success: function (response) {
                         if (response.status === 'success') {
                             var messages = response.messages;
                             $('#chat-messages').empty();
@@ -76,7 +78,7 @@
                             // Handle error
                         }
                     },
-                    error: function() {
+                    error: function () {
                         // Handle error
                     }
                 });
@@ -85,7 +87,7 @@
             // Function to determine if the response contains only new messages
             function isNewMessageResponse(response) {
                 // Example: If your PHP script wraps new messages in a specific container
-                return $(response).find('.new-message-container').length > 0; 
+                return $(response).find('.new-message-container').length > 0;
             }
 
             // Function to display a new message in the chat
@@ -97,7 +99,7 @@
 
             // Send message on button click or Enter key press
             $('#send-button').click(sendMessage);
-            $('#message-input').keypress(function(e) {
+            $('#message-input').keypress(function (e) {
                 if (e.which === 13) {
                     sendMessage();
                 }
@@ -107,9 +109,10 @@
             getMessages();
 
             // Poll for new messages every few seconds
-            setInterval(getMessages, 3000); 
+            setInterval(getMessages, 3000);
         });
     </script>
 
 </body>
+
 </html>

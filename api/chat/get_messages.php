@@ -1,42 +1,42 @@
 <?php
 require dirname(dirname(__FILE__)) . '/../inc/Connection.php';
 
-$ResResult = array();
-
 $senderId = $_GET['sender_id'];
 $receiverId = $_GET['receiver_id'];
 
 // Sanitize input ...
 
-// Fetch tbl_chats_messages from the database (adjust query as needed)
-$sql = "SELECT * FROM tbl_chats_messages WHERE (sender_id = '$senderId' AND receiver_id = '$receiverId') OR (sender_id = '$receiverId' AND receiver_id = '$senderId') ORDER BY timestamp ASC";
-$result = $dating->query($sql);
+// Check if a chat exists between these users
+$checkChatSql = "SELECT id FROM chats WHERE (user1_id = '$senderId' AND user2_id = '$receiverId') OR (user1_id = '$receiverId' AND user2_id = '$senderId')";
+$checkChatResult = $dating->query($checkChatSql);
 
-if ($result->num_rows > 0) {
-
-    $ResResult['status'] = 1;
-
-    while ($row = $result->fetch_assoc()) {
-
-        $ChatInst = array();
-
-        $ChatInst['sender_id'] = $row["sender_id"];
-
-        $ChatInst['message'] = $row["message"];
-
-        $messageClass = ($row["sender_id"] == $senderId) ? 'sent' : 'received';
-
-        $ChatInst['type'] = $messageClass;
-
-        $ResResult['chats'][] = $ChatInst;
-    }
-
-} else {
-    $ResResult['status'] = 0;
-    $ResResult['message'] = "No messages yet.";
+if ($checkChatResult->num_rows == 0) {
+    // If no chat exists, return an empty response
+    $response = array('status' => 'success', 'messages' => array());
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
 }
 
-$dating->close();
+$row = $checkChatResult->fetch_assoc();
+$chatId = $row['id'];
 
-echo json_encode($ResResult);
+// Fetch messages from the database based on the chat_id
+$sql = "SELECT * FROM messages WHERE chat_id = '$chatId' ORDER BY timestamp ASC";
+$result = $dating->query($sql);
+
+$messages = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $message = array(
+            'sender_id' => $row["sender_id"],
+            'message' => $row["message"]
+        );
+        $messages[] = $message;
+    }
+}
+
+$response = array('status' => 'success', 'messages' => $messages);
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

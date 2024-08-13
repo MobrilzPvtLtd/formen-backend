@@ -1,36 +1,48 @@
 <?php
-// Database connection (replace with your actual credentials)
+
 require dirname(dirname(__FILE__)) . '/../inc/Connection.php';
 
-$ResResult = array();
+// ... (Assuming you have the $dating variable established for the database connection)
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $chatId = $_POST['chat_id'];
     $senderId = $_POST['sender_id'];
     $receiverId = $_POST['receiver_id'];
     $message = $_POST['message'];
 
     // Sanitize input (use appropriate sanitization functions)
-    $chatId = $dating->real_escape_string($chatId);
     $senderId = $dating->real_escape_string($senderId);
     $receiverId = $dating->real_escape_string($receiverId);
     $message = $dating->real_escape_string($message);
 
-    $sql = "INSERT INTO tbl_chats_messages (chat_id, sender_id, receiver_id, message) VALUES ('$chatId', '$senderId', '$receiverId', '$message')";
+    // Check if a chat already exists between these users
+    $checkChatSql = "SELECT id FROM chats WHERE (user1_id = '$senderId' AND user2_id = '$receiverId') OR (user1_id = '$receiverId' AND user2_id = '$senderId')";
+    $checkChatResult = $dating->query($checkChatSql);
+
+    if ($checkChatResult->num_rows == 0) {
+        // If no chat exists, create a new chat
+        $createChatSql = "INSERT INTO chats (user1_id, user2_id) VALUES ('$senderId', '$receiverId')";
+        if ($dating->query($createChatSql) !== TRUE) {
+            $response = array('status' => 'error', 'message' => 'Error creating chat');
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit; // Stop further execution
+        }
+        $chatId = $dating->insert_id;
+    } else {
+        $row = $checkChatResult->fetch_assoc();
+        $chatId = $row['id'];
+    }
+
+    // Now insert the message into the messages table with the chat_id
+    $sql = "INSERT INTO messages (chat_id, sender_id, receiver_id, message) VALUES ('$chatId', '$senderId', '$receiverId', '$message')";
 
     if ($dating->query($sql) === TRUE) {
-
-        $ResResult['status'] = 1;
-        $ResResult['chats_messages_id'] = $dating->insert_id;
-        $ResResult['message'] = 'Message sent successfully.';
+        $response = array('status' => 'success', 'message' => 'Message sent successfully');
     } else {
-
-        $ResResult['status'] = 0;
-        $ResResult['message'] = "Error: " . $sql . "<br>" . $dating->error;
+        $response = array('status' => 'error', 'message' => 'Error sending message');
     }
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
-
-$dating->close();
-
-echo json_encode($ResResult);
 ?>

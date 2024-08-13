@@ -1,5 +1,4 @@
 <?php
-// Database connection (replace with your actual credentials)
 require dirname(dirname(__FILE__)) . '/../inc/Connection.php';
 
 $ResResult = array();
