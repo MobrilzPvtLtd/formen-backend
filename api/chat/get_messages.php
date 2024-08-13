@@ -13,6 +13,9 @@ $sql = "SELECT * FROM tbl_chats_messages WHERE (sender_id = '$senderId' AND rece
 $result = $dating->query($sql);
 
 if ($result->num_rows > 0) {
+
+    $ResResult['status'] = 1;
+
     while ($row = $result->fetch_assoc()) {
 
         $ChatInst = array();
@@ -27,7 +30,7 @@ if ($result->num_rows > 0) {
 
         $ResResult['chats'][] = $ChatInst;
     }
-    $ResResult['status'] = 1;
+
 } else {
     $ResResult['status'] = 0;
     $ResResult['message'] = "No messages yet.";
