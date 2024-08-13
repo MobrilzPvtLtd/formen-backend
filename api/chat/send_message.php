@@ -4,6 +4,8 @@ require dirname(dirname(__FILE__)) . '/../inc/Connection.php';
 
 // ... (Assuming you have the $dating variable established for the database connection)
 
+print_r('$_REQUEST');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senderId = $_POST['sender_id'];
     $receiverId = $_POST['receiver_id'];
