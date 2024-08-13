@@ -37,4 +37,6 @@ if ($result->num_rows > 0) {
 }
 
 $dating->close();
+
+echo json_encode($ResResult);
 ?>
