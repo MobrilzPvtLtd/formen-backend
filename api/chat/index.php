@@ -32,6 +32,7 @@
             type: 'POST',
             url: 'send_message.php', // Your PHP script
             data: { 
+                chat_id: chatId, 
                 sender_id: senderId, 
                 receiver_id: receiverId, 
                 message: message 
