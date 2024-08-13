@@ -16,7 +16,7 @@ if ($result->num_rows > 0) {
         echo "<div class='message $messageClass'>" . $row["message"] . "</div>";
     }
 } else {
-    echo "No tbl_chats_messages yet.";
+    echo "No messages yet.";
 }
 
 $dating->close();
