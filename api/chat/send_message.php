@@ -1,6 +1,6 @@
 <?php
 // Database connection (replace with your actual credentials)
-require dirname( dirname(__FILE__) ).'.../inc/Connection.php';
+require dirname( dirname(__FILE__) ).'/../inc/Connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senderId = $_POST['sender_id'];
