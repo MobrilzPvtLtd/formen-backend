@@ -19,6 +19,7 @@
     <script>
         $(document).ready(function() {
     // Replace with actual user IDs (you'll need to implement user authentication)
+    var chatId = 1; 
     var senderId = 1; 
     var receiverId = 2; 
 
