@@ -5,9 +5,6 @@ $data = json_decode(file_get_contents('php://input'), true);
 header('Content-type: text/json');
 $uid = $data['uid'];
 
-// Choose which variable to return based on your preference
-$result = $first;
-
 
 if ($uid == '') {
     $returnArr = array("ResponseCode" => "401", "Result" => "false", "ResponseMsg" => "Something Went wrong  try again !");
