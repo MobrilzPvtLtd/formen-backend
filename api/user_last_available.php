@@ -11,7 +11,7 @@ if ($uid == '') {
 } else {
     $CurrentTime = date("Y-m-d H:i:s");
 
-    $check = $dating->query("UPDATE `tbl_user` SET `last_available` = $CurrentTime WHERE `tbl_user`.`id` = $uid");
+    $check = $dating->query("UPDATE `tbl_user` SET `last_available` = '$CurrentTime' WHERE `id` = '$uid'");
 
     $returnArr = array("ResponseCode" => "200", "Result" => "true", "ResponseMsg" => "Last Available Updated Successfully!!!");
 
