@@ -216,6 +216,6 @@ if ($plan_id == 0 || empty($history['plan_title'])) {
         'plan_description' => $history['plan_description']
     ];
 }
-$returnArr = array("ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"Home Data Get Successfully!!!","profilelist"=>$user,"currency"=>$set['currency'],"totalliked"=>$likes,"direct_chat"=>$direct_chat,"Like_menu"=>$Like_menu,"audio_video"=>$audio_video,"filter_include"=>$filter_include,"plan_name"=>$plan_name,"plan_id"=>$plan_id,"plan_description"=>$plan_description,'is_subscribe'=>$is_subscribe,'plandata'=>$plan,'chat'=>$chat,'is_verify'=>$getplan['is_verify']);	
+$returnArr = array("ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"Home Data Get Successfully!!!","profilelist"=>$user,"currency"=>$set['currency'],"totalliked"=>$likes,"direct_chat"=>$direct_chat,"Like_menu"=>$Like_menu,"audio_video"=>$audio_video,"filter_include"=>$filter_include,"plan_name"=>$plan_name,"plan_id"=>$plan_id,"plan_description"=>$plan_description,'is_subscribe'=>$is_subscribe,'plandata'=>$plan,'chat'=>$chat,'is_verify'=>$getplan['is_verify'],'last_available'=>$getplan['last_available']);	
 }
 echo json_encode($returnArr);
