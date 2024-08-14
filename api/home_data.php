@@ -175,6 +175,7 @@ $ageInterval = $birthdateObj->diff($currentDateObj);
 	$kl['profile_distance'] = $distance.' KM';
 	$kl['profile_images'] = explode('$;',$userdata['other_pic']);
 	$kl['match_ratio'] = $matchRatio;
+	$kl['last_available'] = $userdata['last_available'];
     $likes[] =  $kl;
 }	
 	}
