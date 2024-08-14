@@ -45,7 +45,7 @@ function processFileUploads($prefix, $count, $url) {
 }
 
 
-if($_POST['name'] == '' or $_POST['email'] == '' or $_POST['mobile'] == ''   or $_POST['password'] == '' or $_POST['birth_date'] == '')
+if($_POST['name'] == '' or $_POST['email'] == '' or $_POST['mobile'] == '' or $_POST['password'] == '' or $_POST['birth_date'] == '')
 {
     $returnArr = array("ResponseCode"=>"401","Result"=>"false","ResponseMsg"=>"Something Went Wrong!");
 }
