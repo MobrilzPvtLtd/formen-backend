@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
         $message = array(
             'sender_id' => $row["sender_id"],
             'message' => $row["message"],
-            'message' => $row["message"]
+            'timestamp' => $row["timestamp"]
         );
         $messages[] = $message;
     }
