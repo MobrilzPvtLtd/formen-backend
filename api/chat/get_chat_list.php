@@ -2,7 +2,6 @@
 require dirname(dirname(__FILE__)) . '/../inc/Connection.php';
 
 $senderId = $_GET['sender_id'];
-$receiverId = $_GET['receiver_id'];
 
 // Sanitize input ...
 
