@@ -18,11 +18,7 @@ if ($checkChatResult->num_rows == 0) {
 }
 
 $row = $checkChatResult->fetch_assoc();
-$chatId = $row['id'];
 
-// Fetch messages from the database based on the chat_id
-$sql = "SELECT * FROM messages WHERE chat_id = '$chatId' ORDER BY timestamp ASC";
-$result = $dating->query($sql);
 
 $response = array('status' => 'success', 'chat' => $row);
 header('Content-Type: application/json');
