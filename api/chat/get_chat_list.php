@@ -17,10 +17,24 @@ if ($checkChatResult->num_rows == 0) {
     exit;
 }
 
-$row = $checkChatResult->fetch_assoc();
 
 
-$response = array('status' => 'success', 'chat' => $row);
+
+$chats = array();
+if ($checkChatResult->num_rows > 0) {
+    while ($row = $checkChatResult->fetch_assoc()) {
+        $chat = array(
+            'id' => $row["id"],
+            'user1_id' => $row["user1_id"],
+            'user2_id' => $row["user2_id"],
+            'timestamp' => $row["timestamp"]
+        );
+        $chats[] = $chat;
+    }
+}
+
+
+$response = array('status' => 'success', 'chats' => $chats);
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>
