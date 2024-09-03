@@ -39,6 +39,9 @@ if ($checkChatResult->num_rows > 0) {
         $OtheruserResult = $dating->query($OtheruserSql);
 
         $OtheruserRow = $OtheruserResult->fetch_assoc();
+        print_r($OtheruserRow);
+
+        die();
 
         $chat = array(
             'id' => $row["id"],
