@@ -23,10 +23,29 @@ if ($checkChatResult->num_rows == 0) {
 $chats = array();
 if ($checkChatResult->num_rows > 0) {
     while ($row = $checkChatResult->fetch_assoc()) {
+
+        // Check for the other user in the chat
+
+        if ($row["user1_id"] == $senderId) {
+            $otherUserId = $row["user2_id"];
+        } else {
+            $otherUserId = $row["user1_id"];
+        }
+
+        // Fetch the other user's details
+
+        $OtheruserSql = "SELECT * FROM tbl_user WHERE id = '$otherUserId'";
+
+        $OtheruserResult = $dating->query($OtheruserSql);
+
+        $OtheruserRow = $OtheruserResult->fetch_assoc();
+
         $chat = array(
             'id' => $row["id"],
             'user1_id' => $row["user1_id"],
             'user2_id' => $row["user2_id"],
+            'other_user_name' => $OtheruserRow["name"],
+            'other_user_image' => $OtheruserRow["identity_picture"],
             'timestamp' => $row["timestamp"]
         );
         $chats[] = $chat;
