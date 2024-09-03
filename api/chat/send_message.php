@@ -38,6 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Now insert the message into the messages table with the chat_id
     $sql = "INSERT INTO messages (chat_id, sender_id, receiver_id, message) VALUES ('$chatId', '$senderId', '$receiverId', '$message')";
 
+    //Add last connected time to last_connected
+
+    $last_connected = date("Y-m-d H:i:s");
+
+    $dating->query("UPDATE `chats` SET `last_connected` = '$last_connected' WHERE `id` = '$chatId'");
+
     if ($dating->query($sql) === TRUE) {
         $response = array('status' => 'success', 'message' => 'Message sent successfully');
     } else {
