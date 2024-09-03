@@ -32,6 +32,9 @@ if ($checkChatResult->num_rows > 0) {
             $otherUserId = $row["user1_id"];
         }
 
+        echo $otherUserId;
+        die();
+
         // Fetch the other user's details
 
         $OtheruserSql = "SELECT * FROM tbl_user WHERE id = '$otherUserId'";
