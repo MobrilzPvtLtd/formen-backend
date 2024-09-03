@@ -44,8 +44,8 @@ if ($checkChatResult->num_rows > 0) {
             'id' => $row["id"],
             'user1_id' => $row["user1_id"],
             'user2_id' => $row["user2_id"],
-            'other_user_name' => $OtheruserRow["name"],
-            'other_user_image' => $OtheruserRow["identity_picture"],
+            'name' => $OtheruserRow["name"],
+            'identity_picture' => $OtheruserRow["identity_picture"],
             'timestamp' => $row["timestamp"]
         );
         $chats[] = $chat;
