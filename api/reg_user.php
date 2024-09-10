@@ -58,20 +58,20 @@ else
 	$ccode = isset($_POST['ccode']) ? strip_tags(mysqli_real_escape_string($dating,$_POST['ccode'])) :'null'; 
    // $ccode = strip_tags(mysqli_real_escape_string($dating,$_POST['ccode'])) ?? null;
 	$birth_date = strip_tags(mysqli_real_escape_string($dating,$_POST['birth_date']));
-	$search_preference = strip_tags(mysqli_real_escape_string($dating,$_POST['search_preference']));
-	$radius_search = strip_tags(mysqli_real_escape_string($dating,$_POST['radius_search']));
-	$relation_goal = strip_tags(mysqli_real_escape_string($dating,$_POST['relation_goal']));
-	$profile_bio = strip_tags(mysqli_real_escape_string($dating,$_POST['profile_bio']));
-	$interest = $_POST['interest'];
+	$search_preference = isset($_POST['search_preference']) ? strip_tags(mysqli_real_escape_string($dating,$_POST['search_preference'])) : 'null';
+	$radius_search = isset($_POST['radius_search']) ? strip_tags(mysqli_real_escape_string($dating,$_POST['radius_search'])) : 'null';
+	$relation_goal = isset($_POST['relation_goal']) ? strip_tags(mysqli_real_escape_string($dating,$_POST['relation_goal'])) : 'null';
+	$profile_bio = isset($_POST['profile_bio']) ? strip_tags(mysqli_real_escape_string($dating,$_POST['profile_bio'])) : 'null';
+	$interest = isset($_POST['profile_bio']) ? $_POST['interest'] : 'null';
 	
-	$language = $_POST['language'];
+	$language = isset($_POST['language']) ? $_POST['language'] : 'null';
     $password = strip_tags(mysqli_real_escape_string($dating,$_POST['password']));
-    $refercode = strip_tags(mysqli_real_escape_string($dating,$_POST['refercode']));
-	$gender = strip_tags(mysqli_real_escape_string($dating,$_POST['gender']));
+    $refercode = isset($_POST['refercode']) ? strip_tags(mysqli_real_escape_string($dating,$_POST['refercode'])) : 'null';
+	$gender = isset($_POST['gender']) ? strip_tags(mysqli_real_escape_string($dating,$_POST['gender'])) : 'null';
 	$lats = $_POST['lats'];
 	$longs = $_POST['longs'];
-	$religion = $_POST['religion'];
-	$size = isset($_POST['size']) ? (int) $_POST['size'] : 0;
+	$religion = isset($_POST['religion']) ? $_POST['religion'] : 'null';
+	$size =  isset($_POST['size']) ? (int) $_POST['size'] : 0;
     $checkmob = $dating->query("select * from tbl_user where mobile=".$mobile."");
     $checkemail = $dating->query("select * from tbl_user where email='".$email."'");
    
