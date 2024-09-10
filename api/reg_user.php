@@ -137,6 +137,8 @@ else
         $uploadedFiles = processFileUploads('otherpic', $size, IMAGE_PATH);
         $multifile = implode('$;', $uploadedFiles);
     }
+
+    $multifile = empty($multifile) ? '' : $multifile;
 	
 		   $table="tbl_user";
   $field_values=array("name","mobile","rdate","password","ccode","code","email","gender","lats","longs","birth_date","search_preference","radius_search","relation_goal","interest","language","religion","other_pic","profile_bio");
