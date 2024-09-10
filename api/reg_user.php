@@ -55,8 +55,8 @@ else
     $fname = strip_tags(mysqli_real_escape_string($dating,$_POST['name']));
     $email = strip_tags(mysqli_real_escape_string($dating,$_POST['email']));
     $mobile = strip_tags(mysqli_real_escape_string($dating,$_POST['mobile']));
-	// $ccode = isset($_POST['ccode']) ? 'null' : strip_tags(mysqli_real_escape_string($dating,$_POST['ccode']));
-    $ccode = strip_tags(mysqli_real_escape_string($dating,$_POST['ccode'])) ?? null;
+	$ccode = isset($_POST['ccode']) ? strip_tags(mysqli_real_escape_string($dating,$_POST['ccode'])) :'null'; 
+   // $ccode = strip_tags(mysqli_real_escape_string($dating,$_POST['ccode'])) ?? null;
 	$birth_date = strip_tags(mysqli_real_escape_string($dating,$_POST['birth_date']));
 	$search_preference = strip_tags(mysqli_real_escape_string($dating,$_POST['search_preference']));
 	$radius_search = strip_tags(mysqli_real_escape_string($dating,$_POST['radius_search']));
