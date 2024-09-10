@@ -100,6 +100,8 @@ else
         // Process single file uploads
         $uploadedFiles = processFileUploads('otherpic', $size, IMAGE_PATH);
         $multifile = implode('$;', $uploadedFiles);
+    }else{
+        $multifile = '';
     }
 		$table="tbl_user";
   $field_values=array("name","email","mobile","rdate","password","ccode","refercode","wallet","code","gender","lats","longs","birth_date","search_preference","radius_search","relation_goal","interest","language","religion","other_pic","profile_bio");
